@@ -19,4 +19,8 @@ def parse_coords(string)
   { x: Integer(parts[0]), y: Integer(parts[1]) }
 end
 
-puts read_input_file
+def manhattan_distance(coord1, coord2)
+  (coord1[:x] - coord2[:x]).abs + (coord1[:y] - coord2[:y]).abs
+end
+
+read_input_file.each { |coord| puts manhattan_distance(coord, {x: 0, y:5} )}
