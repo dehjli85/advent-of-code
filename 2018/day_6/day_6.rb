@@ -97,5 +97,27 @@ def get_max_area(areas, coords)
     max_area
 end
 
+def get_total_distance(coord, coords)
+    total = 0
+    coords.each do |c|
+        total += manhattan_distance(c, coord)
+    end
+    total
+end
+
+def get_total_distances(coords)
+    bs = boundaries(coords)
+    count = 0
+    (bs[:min_x]..bs[:max_x]).each do |x|
+        (bs[:min_y]..bs[:max_y]).each do |y|
+            d = get_total_distance({ x: x, y: y }, coords)
+            next if d >= 10000
+            count += 1
+        end
+    end
+    count
+end
+
 areas = get_areas(read_input_file)
 puts "Part I: #{get_max_area(areas, read_input_file)}"
+puts "Part II: #{get_total_distances(read_input_file)}"
