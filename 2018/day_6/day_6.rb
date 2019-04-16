@@ -1,6 +1,5 @@
 require_relative '../common/file_helpers'
 require 'set'
-require 'byebug'
 FILE_LOCATION = "#{File.dirname(__FILE__)}/input.txt"
 
 TEST_COORDS = [
