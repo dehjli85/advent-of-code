@@ -28,14 +28,14 @@ end
 def boundaries(coords)
     min_x = coords[0][:x]
     max_x = coords[0][:x]
-    min_y = coords[0][:x]
-    max_y = coords[0][:x]
+    min_y = coords[0][:y]
+    max_y = coords[0][:y]
 
     coords.each do |coord|
         min_x = min_x < coord[:x] ? min_x : coord[:x]
         min_y = min_y < coord[:y] ? min_y : coord[:y]
         max_x = max_x > coord[:x] ? max_x : coord[:x] 
-        max_y = max_y > coord[:x] ? max_y : coord[:y]
+        max_y = max_y > coord[:y] ? max_y : coord[:y]
     end
 
     { min_x: min_x, min_y: min_y, max_x: max_x, max_y: max_y }
