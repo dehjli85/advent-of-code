@@ -79,6 +79,17 @@ module Day8
       sum += @metadata.sum
       sum
     end
+
+    def value
+      return @metadata.sum if @children_count == 0
+
+      sum = 0
+      @metadata.each do |idx|
+        node = children[idx - 1]
+        sum += node.nil? ? 0 : node.value
+      end
+      sum
+    end
   end
   
   module_function
@@ -97,3 +108,4 @@ module Day8
 end
 
 puts "Part I: #{Day8.build_node.metadata_sum}"
+puts "Part II: #{Day8.build_node.value}"
