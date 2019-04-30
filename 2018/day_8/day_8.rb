@@ -5,10 +5,7 @@ module Day8
   TEST_INPUT = '2 3 0 3 10 11 12 1 1 0 1 99 2 1 1 2'
 
   class Node 
-    @original_string = nil
-    @children_count = nil
-    @metadata_count = nil
-    @body = nil
+    attr_accessor :original_string, :children, :metadata, :string_remainder
     
     def initialize(string)
       @original_string = string
@@ -16,22 +13,6 @@ module Day8
       @metadata = [] # array of integers
       parse_header
       parse_body
-    end
-
-    def original_string
-      @original_string
-    end
-
-    def children
-      @children
-    end
-
-    def metadata
-      @metadata
-    end
-
-    def string_remainder
-      @string_remainder
     end
 
     def parse_header
