@@ -44,10 +44,8 @@ module Day8
       numbers = @original_string.split(' ')
       string = numbers[2..-1].join(' ')
 
-      i = 0
-      while i < @children_count do
+      @children_count.times do |i| 
         string = parse_child(string)
-        i += 1
       end
       
       @metadata = string.split(' ')[0..(@metadata_count-1)].map { |i| Integer(i)}
@@ -71,10 +69,8 @@ module Day8
 
     def metadata_sum
       sum = 0
-      i = 0
-      while i < @children_count do
+      @children_count.times do |i|
         sum += @children[i].metadata_sum
-        i += 1
       end
       sum += @metadata.sum
       sum
@@ -83,12 +79,10 @@ module Day8
     def value
       return @metadata.sum if @children_count == 0
 
-      sum = 0
-      @metadata.each do |idx|
+      @metadata.reduce(0) do |memo, idx|
         node = children[idx - 1]
-        sum += node.nil? ? 0 : node.value
+        memo += node.nil? ? 0 : node.value
       end
-      sum
     end
   end
   
