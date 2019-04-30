@@ -43,12 +43,9 @@ module Day8
     end
 
     def metadata_sum
-      sum = 0
-      @children_count.times do |i|
-        sum += @children[i].metadata_sum
+      @metadata.sum + @children.reduce(0) do |memo, node|
+        memo + node.metadata_sum
       end
-      sum += @metadata.sum
-      sum
     end
 
     def value
