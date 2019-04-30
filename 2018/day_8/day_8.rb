@@ -34,12 +34,6 @@ module Day8
       @string_remainder
     end
 
-    def children_string
-      numbers = @original_string.split(' ')
-      end_idx = numbers.length - (metadata_count + 1)
-      @children_string = numbers[2..end_idx].join(' ')
-    end
-
     # parses the string by adding the next node to the @children instance variable
     # and returning the remaining string
     def parse_child(string)
